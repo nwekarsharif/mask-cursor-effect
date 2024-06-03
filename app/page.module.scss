@@ -7,7 +7,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #afa18f;
+      color: #eb7c32;
       font-size: 64px;
       line-height: 66px;
       cursor: default;
@@ -17,7 +17,7 @@
         padding:40px;
       }
       span{
-        color: #ec4e39;
+        color: #d8d1d1;
       }
     }
   
@@ -25,7 +25,7 @@
       mask-image: url('../public/mask.svg');
       mask-repeat: no-repeat;
       mask-size: 40px;
-      background: #ec4e39;
+      background: #d8d1d1;
       position: absolute;
       color: black;
     }

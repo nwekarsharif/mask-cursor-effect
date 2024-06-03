@@ -1,21 +1,17 @@
 'use client'
 import styles from './page.module.scss';
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useMousePosition } from '@/hooks/useMousePosition';
+import useMousePosition from '@/hooks/useMousePosition';
 
-interface Iprops {}
-
-const Home: React.FC<Iprops> = (props) => {
+const Home: React.FC = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const { x, y } = useMousePosition();
   const size: number = isHovered ? 400 : 40;
 
-  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
-
   return (
     <main className={styles.main}>
+      
       <motion.div
         className={styles.mask}
         animate={{
@@ -24,18 +20,21 @@ const Home: React.FC<Iprops> = (props) => {
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
       >
-        <p onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          A visual designer - with skills that haven&apos;t been replaced by A.I (yet) - making good shit only if the paycheck is equally good.
+        <p
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          A visual designer - with skills that haven't been replaced by A.I (yet) - making good shit only if the paycheck is equally good.
         </p>
       </motion.div>
 
       <div className={styles.body}>
         <p>
-          I&apos;m a <span>selectively skilled</span> product designer with strong focus on producing high quality & impactful digital experience.
+          I'm a <span>selectively skilled</span> product designer with strong focus on producing high quality & impactful digital experience.
         </p>
       </div>
     </main>
   );
 };
 
-export default React.memo(Home);
+export default Home;

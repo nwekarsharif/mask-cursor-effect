@@ -1,28 +1,24 @@
-import { useEffect, useState, useCallback } from "react";
-import { debounce } from "lodash";
+import { useState, useEffect } from "react";
 
-interface Position {
-  x: number;
-  y: number;
+interface Positions {
+    x:number;
+    y:number;
 }
 
-export const useMousePosition = (): Position => {
-  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+const useMousePosition = () => {
+  const [mousePosition, setMousePosition] = useState<Positions>({ x: 0, y: 0 });
 
-  const updateMousePosition = useCallback(
-    debounce((e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    }, 10),
-    []
-  );
+  const updateMousePosition = (e:MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
 
   useEffect(() => {
     window.addEventListener("mousemove", updateMousePosition);
 
-    return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
-    };
-  }, [updateMousePosition]);
+    return () => window.removeEventListener("mousemove", updateMousePosition);
+  }, []);
 
-  return position;
+  return mousePosition;
 };
+
+export default useMousePosition;
