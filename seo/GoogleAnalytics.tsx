@@ -2,7 +2,7 @@
 import React from 'react';
 
 const GoogleAnalytics: React.FC = () => {
-  const googleAnalyticsTag = process.env.NEXT_PUBLIC_GA_KEY as string;
+  const googleAnalyticsTag = process.env.GA_KEY as string;
 
   return (
     <>
